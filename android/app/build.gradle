@@ -34,7 +34,7 @@ if(keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -47,9 +47,15 @@ android {
     defaultConfig {
         applicationId "com.banuacoders.siap"
         minSdkVersion 24
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 46
         versionName '5.0.3'
+
+        manifestPlaceholders = [
+            onesignal_app_id: 'c74759fa-ef93-49b9-8f45-eba1482dc11a',
+            // Project number pulled from dashboard, local value is ignored.
+            onesignal_google_project_number: 'REMOTE'
+        ]
     }
 
     signingConfigs {
@@ -74,4 +80,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 }
